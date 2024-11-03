@@ -29,7 +29,7 @@ app.use((req,res,next)=>{
 app.set("view engine","ejs");
 
 app.use("",require("./routes/routes.js"))
-
+app.use(express.static('uploads'))
 
 
 app.listen(PORT,()=>{

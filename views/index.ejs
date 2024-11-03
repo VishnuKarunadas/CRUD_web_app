@@ -52,25 +52,52 @@
 
 <div class="container">
     <div class="row">
-        <div  class="col-md-12">
+        <div class="col-md-12">
+            <h1 class="my-4 text-center">User List</h1>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                           <th>ID</th>
-                           <th>Image</th>
-                           <th>Name</th>
-                           <th>E-mail</th>
-                           <th>Phone</th>
-                           <th>Action</th> 
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <% if (users.length > 0) { %>
+                            <% users.forEach((user, index) => { %>
+                                <tr>
+                                    <td><%= index + 1 %></td> <!-- Assuming ID is the index -->
+                                    <td>
+                                        <% if (user.image) { %>
+                                            <img src="<%= user.image %>" width="100" class="img-thumbnail">
+                                        <% } else { %>
+                                            No Image
+                                        <% } %>
+                                    </td>
+                                    <td><%= user.name %></td>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.phone %></td>
+                                    <td>
+                                        <a href="/edit/<%= user._id %>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="/delete/<%= user._id %>" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="6" class="text-center">No users found.</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-
 
 
 

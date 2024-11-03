@@ -7,3 +7,4 @@ node_modules
 .env
 # Ignore test-related files
 2pm
+uploads
